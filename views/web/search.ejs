@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <title><%= title %></title>
+</head>
+<body>
+  <div class="container">
+    <div class="jumbotron mt-5">
+      <h1>Mumbai Margdarshan.</h1>
+      <p>Search for local train routes.</p>
+    </div>
+    <form action="/api/discover" method="POST">
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="fromstation">From</label>
+          <select name="fromstation" class="form-control">
+            <option>---Select Station---</option>
+            <% stations.forEach(station => { %>
+              <option value="<%= station._id %>"><%= station.name %></option>
+            <% }) %>
+          </select>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="tostation">To:</label>
+          <select name="tostation" class="form-control">
+            <option>---Select Station---</option>
+            <% stations.forEach(station => { %>
+              <option value="<%= station._id %>"><%= station.name %></option>
+            <% }) %>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary btn-lg">Search route!</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

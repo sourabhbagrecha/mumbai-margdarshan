@@ -1,0 +1,69 @@
+name,shortName,isMajor,arrival,distance,isWestern,isCentral,isHarbour
+Mira Road,MRD,false ,0,0,true ,false ,false 
+Dahisar,DSR,false ,5,3,true ,false ,false 
+Borivali,BRV,true ,11,6,true ,false ,false 
+Kandivali,KND,false ,16,8,true ,false ,false 
+Malad,MLD,false ,19,10,true ,false ,false 
+Goregaon,GRN,false ,22,13,true ,false ,false 
+Jogeshwari,JHW,false ,27,16,true ,false ,false 
+Andheri,AND,true ,33,18,true ,false ,false 
+Vile Parle,VPR,false ,36,20,true ,false ,false 
+Santacruz,SNT,false ,39,22,true ,false ,false 
+Khar Road,KHR,false ,42,23,true ,false ,false 
+Bandra,BND,true ,46,25,true ,false ,false 
+Mahim,MHM,false ,49,27,true ,false ,false 
+Matunga Road,MUR,false ,52,28,true ,false ,false 
+Dadar,DAR,true ,56,29,true ,true ,false 
+Prabhadevi,PRB,false ,58,31,true ,false ,false 
+Lower Parel,LWP,false ,61,32,true ,false ,false 
+Mahalaxmi,MAL,false ,64,34,true ,false ,false 
+Mumbai Central,MCL,true ,67,35,true ,false ,false 
+Grant Road,GNR,false ,69,36,true ,false ,false 
+Charni Road,CNR,false ,71,37,true ,false ,false 
+Marine Lines,MLN,false ,74,38,true ,false ,false 
+Churchgate,CHG,true ,77,40,true ,false ,false 
+Kalyan,KLY,true ,0,0,false ,true ,false 
+Thakurli,THR,false ,7,4,false ,true ,false 
+Dombivli,DMB,true ,10,5,false ,true ,false 
+Kopar,KPR,false ,13,6,false ,true ,false 
+Diva Junction,DJN,false ,18,11,false ,true ,false 
+Mumbra,MRA,false ,22,14,false ,true ,false 
+Kalva,KVA,false ,28,18,false ,true ,false 
+Thane,THN,true ,32,20,false ,true ,false 
+Mulund,MND,false ,36,23,false ,true ,false 
+Nahur,NUR,false ,39,25,false ,true ,false 
+Bhandup,BHA,false ,42,28,false ,true ,false 
+Kanjur Marg,KMA,false ,45,29,false ,true ,false 
+Vikhroli,VKH,false ,48,31,false ,true ,false 
+Ghatkopar,GHT,true ,52,34,false ,true ,false 
+Vidyavihar,VID,false ,55,36,false ,true ,false 
+Kurla,KUR,true ,58,38,false ,true ,true 
+Sion,SIO,false ,62,41,false ,true ,false 
+Parel,PAR,false ,69,45,false ,true ,false 
+Currey Road,CRR,false ,72,46,false ,true ,false 
+Chinchhpokli,CIN,false ,76,47,false ,true ,false 
+Byculla,BYC,true ,79,48,false ,true ,false 
+Sandhurst Road,SAN,false ,82,50,false ,true ,false 
+Masjid,MAS,false ,85,51,false ,true ,true 
+Mumbai CST,CST,true ,89,53,false ,true ,true 
+Panvel,PAN,true ,0,0,false ,false ,true 
+Khandeshwar,KHA,false ,5,3,false ,false ,true 
+Kharghar,KGH,true ,11,8,false ,false ,true 
+Belapur CBD,BEL,true ,15,10,false ,false ,true 
+Seawood Darave,SEA,false ,19,12,false ,false ,true 
+Nerul,NER,true ,22,14,false ,false ,true 
+Juinagar,JUI,false ,25,17,false ,false ,true 
+Sanpada,SAN,false ,28,18,false ,false ,true 
+Vashi,VAS,true ,30,20,false ,false ,true 
+Mankhurd,MAN,true ,38,27,false ,false ,true 
+Govandi,GOV,false ,41,30,false ,false ,true 
+Chembur,CHE,false ,43,31,false ,false ,true 
+Tilaknagar,TIL,false ,46,32,false ,false ,true 
+Chunabhatti,CHU,false ,52,35,false ,false ,true 
+GTB Nagar,GTB,false ,55,37,false ,false ,true 
+Wadala Road,WAD,true ,61,39,false ,false ,true 
+Sewri,SEW,false ,64,41,false ,false ,true 
+Cotton Green,COT,false ,67,43,false ,false ,true 
+Reay Road,REA,false ,69,44,false ,false ,true 
+Dockyard Road,DOC,false ,72,45,false ,false ,true 
+Sandhurst Road,SAN,false ,74,46,false ,false ,true 
