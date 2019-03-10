@@ -1,0 +1,124 @@
+<%- include ../partials/head.ejs %>
+</head>
+<body>
+  <%- include ../partials/header.ejs %>
+  <div class="container">
+    <div class="jumbotron mt-5">
+      <h1>Add something about <%= station.name %></h1>
+    </div>
+    <form action="/admin/station-edit/<%= station._id %>" method="POST">
+      <div class="form-group">
+        <input name="name" type="text" class="form-control" value="<%= station.name %>" placeholder="Enter the Station Name" required>
+      </div>
+      <div class="form-group">
+        <input name="imgsrc" type="url" class="form-control" value="<%= station.imgSrc %>" placeholder="Enter the image URL" required>
+      </div>
+      <div class="form-group">
+        <textarea name="desc" cols="30" rows="10" class="form-control" placeholder="Describe the station here." required><%= station.description %></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block mt-2"><h1>Save</h1></button>
+    </form>
+    <button class="btn btn-lg btn-success m-3" onclick="addPlaceDiv(event)">Add a Nearby Place</button>
+    <div id="nearby-place-div">
+
+    </div>
+    <div class="all-nearby-places">
+      <% if(station.places.length !== 0 && station.places){ %>
+        <h2>Nearby Places</h2>
+        <hr>
+        <% station.places.forEach(p => { %>
+          <div class="m-3 p-3 bg-light">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-6">
+                  <img src="<%= p.imgSrc %>" alt="<%= p.name %>" class="rounded" style="width: 100%;">
+                </div>
+                <div class="col-md-6">
+                  <h2><%= p.name %></h2>
+                  <p><%= p.description %></p>
+                  <a href="<%= p.link %>">Know More!</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% }) %>
+      <% } %>
+    </div>
+  </div>
+  <script>
+  const createPlaceDiv = () => {
+    return `<div class="bg-secondary p-3 mt-5" id="new-place-div">
+      <form action="/place/new" method="post">
+        <h3>Add a New Place.</h3>
+        <div class="form-group">
+          <input id="name" type="text" name="name" class="form-control" placeholder="Enter the name of place" required>
+        </div> 
+        <div class="form-group">
+          <input id="imgsrc" type="url" class="form-control" name="imgsrc" placeholder="Enter the image URL for this place." required>
+        </div>
+        <div class="form-group">
+          <textarea id="description" name="description" cols="30" rows="6" class="form-control" placeholder="Describe this place"></textarea>
+        </div>
+        <div class="form-group">
+          <input id="link" type="url" class="form-control" name="link" placeholder="Enter the reference URL for this place." required>
+        </div>
+        <div class="form-group">
+          <input id="distance" type="number" name="distance" class="form-control" placeholder="Distance from station.(in km)" required>
+        </div>
+        <div class="form-group">
+          <input id="station" type="hidden" name="station" value="<%= station._id %>">
+        </div>
+        <input type="submit" value="Save" class="btn btn-success" onclick="submitPlace(event)">
+      </form>
+    </div>`;
+  }
+  const submittedPlace = (data) => {
+    return `<div class="m-3 p-3 bg-info">
+              <div class="container">
+                <h5 class="text-warning">Place added successfully!</h5>
+                <div class="row">
+                  <div class="col-md-6">
+                    <img src="${data.imgSrc}" alt="${data.name}" class="rounded" style="width: 100%;">
+                  </div>
+                  <div class="col-md-6">
+                    <h2>${data.name}</h2>
+                    <p>${data.description}</p>
+                    <a href="${data.link}">Know More!</a>
+                  </div>
+                </div>
+              </div>
+            </div>`;
+  }
+  const addPlaceDiv = (e) => {
+    e.preventDefault();
+    $('#nearby-place-div').html(createPlaceDiv());
+    $('html, body').animate({
+        scrollTop: $("#nearby-place-div").offset().top
+    }, 500);
+  }
+  const submitPlace = (event) => {
+
+    $('form').submit(function(event) {
+      var formData = {
+        'name' : $('#name').val(),
+        'imgsrc' : $('#imgsrc').val(),
+        'description' : $('#description').val(),
+        'link' : $('#link').val(),
+        'distance' : $('#distance').val(),
+        'station' : $('#station').val()
+      };
+      $.ajax({
+        type : 'POST',
+        url : '/place/new',
+        data : formData,
+        dataType : 'json',
+        encode : true
+      })
+      .done(function(data) {
+        $('#new-place-div').fadeOut(1, () => $('#nearby-place-div').append(submittedPlace(data)));
+      });
+      event.preventDefault();
+    });
+  }
+  </script>
+<%- include ../partials/footer.ejs %>

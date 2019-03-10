@@ -50,7 +50,9 @@ exports.routeDiscovey = async(req, res, next) => {
         intermediateStations: intermediateStations,
         commonStationT : false,
         totalDistance: totalDistance,
-        totalTime: totalTime
+        totalTime: totalTime,
+        user: req.user,
+        isLoggedIn: req.session.isLoggedIn
       });
     } else {
       const calcQuery = (line) => {
@@ -107,13 +109,17 @@ exports.routeDiscovey = async(req, res, next) => {
         intermediateStations: intermediateStations,
         commonStationT: commonStationT,
         totalDistance: totalDistance,
-        totalTime: totalTime
+        totalTime: totalTime,
+        isLoggedIn: req.session.isLoggedIn,
+        user: req.user
       })
     }
   }catch(err){
     console.log(err);
     return res.render('web/error-results',{
-      title: "No route Available"
+      title: "No route Available",
+      isLoggedIn: req.session.isLoggedIn,
+      user: req.user
     })
   }
 }

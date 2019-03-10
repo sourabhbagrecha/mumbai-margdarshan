@@ -7,6 +7,12 @@ const stationSchema = new Schema({
     type: String,
     required: true
   },
+  description: {
+    type: String
+  },
+  imgSrc: {
+    type: String
+  },
   shortName: {
     type: String
   },
@@ -33,6 +39,12 @@ const stationSchema = new Schema({
   isWestern: {
     type: Boolean,
     required: true
+  },
+  places: {
+    type: [{
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: 'Place'
+    }]
   }
 });
 

@@ -1,0 +1,50 @@
+<%- include ../partials/head.ejs %>
+</head>
+<body>
+  <%- include ../partials/header.ejs %>
+  <div class="container mt-5">
+    <div class="jumbotron pt-2 pb-2">
+      <h1>Explore Mumbai Like Never Before!</h1>
+    </div>
+    <% if(topPlaces.length !== 0 && topPlaces){ %>
+      <h2>Top Places to Visit in Mumbai</h2>
+      <hr>
+      <div class="row d-flex justify-content-center">
+        <% topPlaces.forEach(p => { %>
+          <div class="col-md-5 p-4 m-4 bg-light shadow">
+              <img src="<%= p.imgSrc %>" alt="<%= p.name %>" class="rounded" style="width: 100%; height: 16rem;">
+              <h2><%= p.name %> <span style="font-size: 1rem">@<%= p.station.name %></span></h2>
+              <p><%= p.description %></p>
+              <a href="<%= p.link %>">Know More!</a>
+          </div>
+        <% }) %>
+      </div>
+    <% } %>
+    <div class="row">
+      <div class="col-md-4">
+        <h2>Western Stations</h2>
+        <ul class="list-group">
+          <% westernStations.forEach(s => { %>
+            <li class="list-group-item shadow-sm mt-2 bg-light"><%= s.name %> : <%= s.places.length %> Places <div class="d-inline float-right"><a href="/station/<%= s._id %>" target="_blank"><i class="fas fa-external-link-alt"></i></a></div></li>
+          <% });%>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h2>Central Stations</h2>
+        <ul class="list-group">
+          <% centralStations.forEach(s => { %>
+            <li class="list-group-item shadow-sm mt-2 bg-light"><%= s.name %> : <%= s.places.length %> Places<div class="d-inline float-right"><a href="/station/<%= s._id %>" target="_blank"><i class="fas fa-external-link-alt"></i></a></div></li>
+          <% });%>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h2>Harbour Stations</h2>
+        <ul class="list-group">
+          <% harbourStations.forEach(s => { %>
+            <li class="list-group-item shadow-sm mt-2 bg-light"><%= s.name %> : <%= s.places.length %> Places<div class="d-inline float-right"><a href="/station/<%= s._id %>" target="_blank"><i class="fas fa-external-link-alt"></i></a></div></li>
+          <% });%>
+        </ul>
+      </div>
+    </div>
+  </div>
+<%- include ../partials/footer.ejs %>
