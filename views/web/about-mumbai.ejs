@@ -25,7 +25,7 @@
         <h2>Western Stations</h2>
         <ul class="list-group">
           <% westernStations.forEach(s => { %>
-            <li class="list-group-item shadow-sm mt-2 bg-light"><%= s.name %> : <%= s.places.length %> Places <div class="d-inline float-right"><a href="/station/<%= s._id %>" target="_blank"><i class="fas fa-external-link-alt"></i></a></div></li>
+            <li class="list-group-item shadow-sm mt-2 bg-light"><%= s.name %> : <%= s.places.length %> Places <div class="d-inline float-right"><a href="/station/<%= s._id %>" target="_blank">Explore <i class="fas fa-external-link-alt"></i></a></div></li>
           <% });%>
         </ul>
       </div>
@@ -33,7 +33,7 @@
         <h2>Central Stations</h2>
         <ul class="list-group">
           <% centralStations.forEach(s => { %>
-            <li class="list-group-item shadow-sm mt-2 bg-light"><%= s.name %> : <%= s.places.length %> Places<div class="d-inline float-right"><a href="/station/<%= s._id %>" target="_blank"><i class="fas fa-external-link-alt"></i></a></div></li>
+            <li class="list-group-item shadow-sm mt-2 bg-light"><%= s.name %> : <%= s.places.length %> Places<div class="d-inline float-right"><a href="/station/<%= s._id %>" target="_blank">Explore <i class="fas fa-external-link-alt"></i></a></div></li>
           <% });%>
         </ul>
       </div>
@@ -41,7 +41,7 @@
         <h2>Harbour Stations</h2>
         <ul class="list-group">
           <% harbourStations.forEach(s => { %>
-            <li class="list-group-item shadow-sm mt-2 bg-light"><%= s.name %> : <%= s.places.length %> Places<div class="d-inline float-right"><a href="/station/<%= s._id %>" target="_blank"><i class="fas fa-external-link-alt"></i></a></div></li>
+            <li class="list-group-item shadow-sm mt-2 bg-light"><%= s.name %> : <%= s.places.length %> Places<div class="d-inline float-right"><a href="/station/<%= s._id %>" target="_blank">Explore <i class="fas fa-external-link-alt"></i></a></div></li>
           <% });%>
         </ul>
       </div>
