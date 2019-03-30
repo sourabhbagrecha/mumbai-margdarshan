@@ -21,6 +21,9 @@ const userSchema = new Schema({
       required: true 
     }
   },
+  bookedTickets: {
+    type: [Object]
+  }
 }, {timestamps: true});
 
 module.exports = mongoose.model('User', userSchema);

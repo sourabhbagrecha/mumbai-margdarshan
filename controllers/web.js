@@ -1,5 +1,6 @@
 const Station = require('../models/station');
 const Place = require('../models/place');
+const User = require('../models/user');
 
 exports.getSearchPage = async (req, res, next) => {
   try {
@@ -70,4 +71,47 @@ exports.getStation = async (req, res, next) => {
     user: req.user,
     station: station
   })
+}
+
+exports.getPaymentPage = async (req, res, next) => {
+  try {
+    distance = parseInt(req.body.distance);
+    const bill = {
+      name: user.name,
+      from: req.body.from,
+      to: req.body.to,
+      fare: (distance * 2),
+      distance: distance,
+      time: req.body.time
+    };
+    return res.render('/web/payment',{
+      title: 'Book your tickets!',
+      isLoggedIn: req.session.isLoggedIn,
+      user: req.user,
+      bill: bill 
+    })
+  } catch (error) {
+    console.log(error);
+    return res.json(500).json({message: "Internal Server Error!"});
+  }
+}
+
+exports.bookTicket = async (req, res, next) => {
+  try {
+    const user = User.findById(req.user._id);
+    let ticket = {
+      name: user.name,
+      from: req.body.from,
+      to: req.body.to,
+      fare: (req.body.distance * 2),
+      distance: req.body.distance,
+      time: req.body.time
+    };
+    user.bookedTickets.push(ticket);
+    const results = await user.save();
+    return res.redirect('/')
+  } catch (error) {
+    console.log(error);
+    return res.json(500).json({message: "Internal Server Error!"});
+  }
 }

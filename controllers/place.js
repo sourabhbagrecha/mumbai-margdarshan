@@ -3,19 +3,24 @@ const Station = require('../models/station');
 
 exports.createPlace = async (req, res, next) => {
   try {
-    const created = await Place.create({
-      name: req.body.name,
-      imgSrc: req.body.imgsrc,
-      station: req.body.station,
-      distance: req.body.distance,
-      description: req.body.description,
-      link: req.body.link
-    })
-    console.log(created);
-    const station = await Station.findById(req.body.station);
-    station.places.push(created._id);
-    station.save();
-    return res.status(201).json(created);
+    const alreadyAdded = await Place.find({name: req.body.name});
+    if(alreadyAdded.length !== 0){
+      return res.status(401).json({message:'Place already exists!'})
+    } else {  
+      const created = await Place.create({
+        name: req.body.name,
+        imgSrc: req.body.imgsrc,
+        station: req.body.station,
+        distance: req.body.distance,
+        description: req.body.description,
+        link: req.body.link
+      })
+      console.log(created);
+      const station = await Station.findById(req.body.station);
+      station.places.push(created._id);
+      station.save();
+      return res.status(201).json(created);
+    }
   } catch (error) {
     console.log(error);
     return res.status(500).json(error);
